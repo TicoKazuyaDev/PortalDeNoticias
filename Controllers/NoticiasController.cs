@@ -1,0 +1,29 @@
+﻿using PortalDeNoticias.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace PortalDeNoticias.Controllers
+{
+    public class NoticiasController : Controller
+    {
+        // GET: Noticias
+        public ActionResult Index() //método executado por padrão quando acessamos esse controler
+        {
+            return View(RepositorioNoticias.Noticias);
+        }
+        public ActionResult Detalhes(int id)
+        {
+            var noticia = RepositorioNoticias.Noticias.FirstOrDefault(n => n.Id == id); //lambda
+            return View(noticia);
+        }
+        public ActionResult Buscar(string texto)
+        {
+            var noticia = RepositorioNoticias.Noticias.Where(n => n.Titulo.Contains(texto) || n.Conteudo.Contains(
+                ));
+            return View(noticias);
+        }
+    }
+}
